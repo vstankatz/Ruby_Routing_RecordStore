@@ -11,7 +11,7 @@
 
   <% if @albums.any? %>
   <ul>
-    <% @albums.each do |album| %>
+    <% @albums.sort_by(&:name).each do |album| %>
     <li><a href="/albums/<%= album.id %>"><%= album.name %></a></li>
     <% end %>
   </ul>
@@ -20,10 +20,10 @@
   <% end %>
 
   <a href="/albums/new">Add a new album</a>
-  <form action="/albums">
+  <form action="/albums/search/" method="get">
     <div class="form-group">
-      <label for="check">Search</label>
-      <input id="check" name="check" class="form-control" type="text">
+      <label for="searched">Search</label>
+      <input id="searched" name="searched" class="form-control" type="text">
     </div>
     <button type="submit">Go!</button>
   </form>

@@ -6,6 +6,9 @@
   </head>
   <body>
     <h4>Album Name: <%= @album.name %></h4>
+    <h4>Album Year: <%= @album.year%></h4>
+    <h4>Album Genre: <%= @album.genre %></h4>
+    <h4>Album Artist: <%= @album.artist%></h4>
     <p><a href="/albums/<%= @album.id %>/edit">Edit Album</a></p>
     <a href="/albums">Return to Album List</a>
   </body>

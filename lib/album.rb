@@ -1,28 +1,30 @@
 class Album
-  attr_reader :id, :name, :search
+  attr_reader :id, :name, :year, :genre, :artist
 
   @@albums = {}
   @@total_rows = 0
-  def initialize(name, id, search)
+  def initialize(name, id, year, genre, artist)
     @name = name
     @id = id || @@total_rows += 1
-    @search = search
+    @year = year
+    @genre = genre
+    @artist = artist
   end
 
-  def add_search
-    @search = "search=#{@name.split(' ').join('+')}"
-  end
+  # def add_search
+  #   @search = "search=#{@name.split(' ').join('+')}"
+  # end
 
   def self.all()
     @@albums.values()
   end
 
   def save()
-    @@albums[self.id] = Album.new(self.name, self.id, self.search)
+    @@albums[self.id] = Album.new(self.name, self.id, self.year, self.genre, self.artist)
   end
 
   def ==(album_to_compare)
-    self.name() == album_to_compare.name()
+    self.name().downcase().eql?(album_to_compare.name.downcase()) && self.artist().downcase().eql?(album_to_compare.artist.downcase())
   end
 
   def self.clear
@@ -34,13 +36,20 @@ class Album
     @@albums[id]
   end
 
-  # def self.search(album_name)
-  #   fetch from the hash:
-  #     an album where the @search == album_name
-  # end
+  def self.search(album_name)
+    return_array = @@albums.values.select { |album| album.name.downcase == album_name.downcase }
+    if return_array == []
 
-  def update(name)
+    else
+      return_array.sort_by(&:year)
+    end
+  end
+
+  def update(name, year, genre, artist)
     @name = name
+    @year = year
+    @genre = genre
+    @artist = artist
   end
 
   def delete
