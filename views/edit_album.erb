@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Album</title>
+  </head>
+  <body>
+    <h1>Update <%= @album.name()%></h1>
+    <form action="/albums/<%= @album.id() %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+
+      <label for="name">Rename Album</label>
+      <input type="text" name="name" id="name">
+
+      <button type="submit">Update</button>
+    </form>
+    <p><a href="/albums">Return to Album List</a></p>
+
+    <form action="/albums/<%= @album.id() %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+
+      <button type="submit">Delete Album</button>
+    </form>
+  </body>
+</html>
