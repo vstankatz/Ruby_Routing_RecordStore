@@ -15,9 +15,6 @@ post ('/') do
   b = params[:side2].to_i
   c = params[:side3].to_i
   @triangle = Triangle.new(a, b, c)
-  puts @triangle.a
-  puts @triangle.b
-  puts @triangle.c
   outcome = @triangle.is_a_triangle?
 
   if outcome == true

@@ -62,8 +62,8 @@ delete('/albums/:id') do
   erb(:albums)
 end
 
-# get('/albums?:search') do
-#   puts "1"
-#   @album = Album.find(params[:id].to_i())
-#   erb(:album)
-# end
+get('/albums?:search') do
+  puts "1"
+  @album = Album.find(params[:id].to_i())
+  erb(:album)
+end
