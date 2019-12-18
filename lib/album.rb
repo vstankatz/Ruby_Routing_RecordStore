@@ -1,14 +1,16 @@
 class Album
-  attr_reader :id, :name, :year, :genre, :artist
+  attr_reader :id, :name, :year, :genre, :artist, :status
 
   @@albums = {}
+  @@sold_albums = {}
   @@total_rows = 0
-  def initialize(name, id, year, genre, artist)
+  def initialize(name, id, year, genre, artist, status)
     @name = name
     @id = id || @@total_rows += 1
     @year = year
     @genre = genre
     @artist = artist
+    @status = "available"
   end
 
   # def add_search
@@ -19,8 +21,13 @@ class Album
     @@albums.values()
   end
 
+  def self.bought()
+    @@sold_albums.values()
+  end
+
+
   def save()
-    @@albums[self.id] = Album.new(self.name, self.id, self.year, self.genre, self.artist)
+    @@albums[self.id] = Album.new(self.name, self.id, self.year, self.genre, self.artist, self.status)
   end
 
   def ==(album_to_compare)
@@ -54,6 +61,12 @@ class Album
 
   def delete
     @@albums.delete(self.id)
+  end
+
+  def sold
+
+    @status = "sold"
+    @@sold_albums[self.id] = Album.new(self.name, self.id, self.year, self.genre, self.artist, self.status)
   end
 
 end
