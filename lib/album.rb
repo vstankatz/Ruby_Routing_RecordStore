@@ -13,9 +13,6 @@ class Album
     @status = "available"
   end
 
-  # def add_search
-  #   @search = "search=#{@name.split(' ').join('+')}"
-  # end
 
   def self.all()
     @@albums.values()
@@ -51,6 +48,10 @@ class Album
       return_array.sort_by(&:year)
     end
   end
+
+  def songs
+  Song.find_by_album(self.id)
+end
 
   def update(name, year, genre, artist)
     @name = name

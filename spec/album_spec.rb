@@ -1,20 +1,20 @@
 require 'rspec'
 require 'album'
 
-describe('#save') do
-  it("Saves album") do
-    album = Album.new("Giant Steps", nil, 2000, "bluegrass", "old mcdonald", nil)
-    album.save()
-    album2 = Album.new("Blue", nil, 1990, "pop", "Aba", nil)
-    album2.save()
-    expect(Album.all).to(eq([album, album2]))
-  end
-end
-
 describe '#Album' do
 
   before(:each) do
     Album.clear()
+  end
+
+  describe('#save') do
+    it("Saves album") do
+      album = Album.new("Giant Steps", nil, 2000, "bluegrass", "old mcdonald", nil)
+      album.save()
+      album2 = Album.new("Blue", nil, 1990, "pop", "Aba", nil)
+      album2.save()
+      expect(Album.all).to(eq([album, album2]))
+    end
   end
 
   describe('.all') do

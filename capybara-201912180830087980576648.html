@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>All Sales Vinyl</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <div class="container">
+      <!DOCTYPE html>
+<html>
 <head>
   <title>All Sales Vinyl</title>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
@@ -9,17 +17,11 @@
 
   <h3>Available Records</h3>
 
-  <% if @albums.any? %>
-  <ul>
-    <% @albums.sort_by(&:name).each do |album| %>
-    <li><a href="/albums/<%= album.id %>"><%= album.name %>, <%= album.status %></a></li>
-    <% end %>
-  </ul>
-  <% else %>
+  
   <p>There are currently no records to display.</p>
-  <% end %>
+  
 
-  <a href="/albums/new">Add a New Album</a>
+  <a href="/albums/new">Add a new album</a>
   <form action="/albums/search/" method="get">
     <div class="form-group">
       <label for="searched">Search</label>
@@ -29,4 +31,8 @@
   </form>
 
 </body>
+</html>
+
+    </div>
+  </body>
 </html>
