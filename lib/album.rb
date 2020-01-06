@@ -48,12 +48,18 @@ end
   end
 
   def self.clear
-    @@albums = {}
-    @@total_rows = 0
+    DB.exec("DELETE FROM albums *;")
   end
 
   def self.find(id)
-    @@albums[id]
+    album = DB.exec("SELECT * FROM albums WHERE id = #{id};").first
+    name = album.fetch("name")
+    id = album.fetch("id").to_i
+    year = album.fetch("year")
+    genre = album.fetch("genre")
+    artist = album.fetch("artist")
+    status = album.fetch("status")
+    Album.new({:name => name, :id => id, :year => year, :genre => genre, :artist => artist, :status => status})
   end
 
   def self.search(album_name)
@@ -69,15 +75,19 @@ end
   Song.find_by_album(self.id)
 end
 
-  def update(name, year, genre, artist)
-    @name = name
-    @year = year
-    @genre = genre
-    @artist = artist
+  def update(attributes)
+    @name = attributes.fetch(:name)
+    @year = attributes.fetch(:year)
+    @genre = attributes.fetch(:genre)
+    @artist = attributes.fetch(:artist)
+
+  DB.exec("UPDATE albums SET name = '#{@name}', year = '#{@year}', genre = '#{@genre}', artist = '#{@artist}' WHERE id = #{@id};")
+
   end
 
   def delete
-    @@albums.delete(self.id)
+   DB.exec("DELETE FROM albums WHERE id = #{@id};")
+   DB.exec("DELETE FROM songs WHERE album_id = #{@id};")
   end
 
   def sold
