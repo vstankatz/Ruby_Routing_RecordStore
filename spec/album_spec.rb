@@ -6,9 +6,7 @@ describe '#Album' do
   describe('#save') do
     it("Saves album") do
       album = Album.new({:name => "Giant Steps", :id => nil, :year => 2000, :genre =>"bluegrass", :artist => "old mcdonald", :status => nil})
-
       album.save()
-
       album2 = Album.new({:name => "Blue", :id => nil, :year => 1990, :genre => "pop", :artist => "aba", :status => nil})
       album2.save()
       expect(Album.all).to(eq([album, album2]))
@@ -32,9 +30,7 @@ describe '#Album' do
   describe('.clear') do
     it('clears all albums') do
       album = Album.new({:name => "Giant Steps", :id => nil, :year => 2000, :genre =>"bluegrass", :artist => "old mcdonald", :status => nil})
-
       album.save()
-
       album2 = Album.new({:name => "Blue", :id => nil, :year => 1990, :genre => "pop", :artist => "aba", :status => nil})
       album2.save()
       Album.clear()
@@ -45,9 +41,7 @@ describe '#Album' do
   describe('.find') do
     it("finds an album by id") do
       album = Album.new({:name => "Giant Steps", :id => nil, :year => 2000, :genre =>"bluegrass", :artist => "old mcdonald", :status => nil})
-
       album.save()
-
       album2 = Album.new({:name => "Blue", :id => nil, :year => 1990, :genre => "pop", :artist => "aba", :status => nil})
       album2.save()
       expect(Album.find(album.id)).to(eq(album))
