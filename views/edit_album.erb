@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Edit Album</title>
-  </head>
-  <body>
     <h1>Update <%= @album.name()%></h1>
     <form action="/albums/<%= @album.id() %>" method="post">
       <input type="hidden" name="_method" value="patch">
@@ -29,5 +23,3 @@
 
       <button type="submit">Delete Album</button>
     </form>
-  </body>
-</html>

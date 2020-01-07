@@ -1,7 +1,30 @@
 body {
-  background-color: red;
+  background-color: #006699;
+  color: white;
+  font-family:
+}
+.jumbotron {
+  background-color: pink;
+  font-family: 'Lilita One', cursive;
+
 }
 
-.jumbotron {
-  background-color: blue;
+button {
+  font-family: sans-serif;
+  background: lightgreen;
+  color: grey;
+}
+
+a {
+  color: lightgreen;
+}
+
+h3 {
+  font-family: "Comic Sans MS";
+  color: black;
+}
+
+input[type="text"] {
+  font-family: "Comic Sans MS";
+  color: #9933ff;
 }
